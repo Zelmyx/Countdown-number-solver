@@ -1,13 +1,15 @@
 
 def solve(numbers, target):
     recursive_permutations(numbers, target, [])
+    print(valid_expression_list)
 
 
 def recursive_permutations(numbers, target, expression):
     for i in range(len(numbers)):
         expression.append(numbers.pop(i))
 
-        calculate(expression)
+        if calculate(expression) == target:
+            valid_expression_list.append(expression[:])
 
         if len(numbers) == 0:
             break
@@ -48,10 +50,15 @@ def calculate(expression):
     for char in expression:
         if type(char) == int:
             total = operators(operator, total, char)
+            if type(total) != int:
+                # total is a fraction
+                return 0
         else:
             operator = char
 
     return total
 
+
+valid_expression_list = []
 
 solve([1, 2, 3], 6)
