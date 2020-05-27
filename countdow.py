@@ -51,5 +51,7 @@ def calculate(expression):
         else:
             operator = char
 
+    return total
+
 
 solve([1, 2, 3], 6)
