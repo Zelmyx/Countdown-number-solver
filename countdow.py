@@ -1,7 +1,8 @@
 
 def solve(numbers, target):
     recursive_permutations(numbers, target, [])
-    print(valid_expression_list)
+    correct_expressions(valid_expression_list)
+    print(valid_expression_list[6])
 
 
 def recursive_permutations(numbers, target, expression):
@@ -59,6 +60,26 @@ def calculate(expression):
     return total
 
 
+def correct_expressions(valid_expression_list):
+    for expression in valid_expression_list:
+        num_numbers = int((len(expression) + 1) / 2)
+        pairs_of_parenthesis = num_numbers - 2
+
+        for i in range(len(expression) - 2, 1, -2):
+            if expression[i] == "+" or expression[i] == "-":
+                pairs_of_parenthesis -= 1
+            elif expression[i] == "*" or expression[i] == "/":
+                if expression[i - 2] == "*" or expression[i - 2] == "/":
+                    pairs_of_parenthesis -= 1
+                else:
+                    expression.insert(i, ")")
+            else:
+                expression.insert(i, ")")
+
+        for _ in range(pairs_of_parenthesis):
+            expression.insert(0, "(")
+
+
 valid_expression_list = []
 
-solve([1, 2, 3], 6)
+solve([1, 2, 3, 4], 24)
