@@ -31,8 +31,18 @@ def recursive_permutations(numbers, target, expression):
     return
 
 
+def operators(operator, total, char):
+    return 0
+
+
 def calculate(expression):
-    pass
+    total = 0
+    operator = "+"
+    for char in expression:
+        if type(char) == int:
+            total = operators(operator, total, char)
+        else:
+            operator = char
 
 
 solve([1, 2, 3], 6)
