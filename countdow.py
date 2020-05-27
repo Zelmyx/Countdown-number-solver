@@ -32,7 +32,14 @@ def recursive_permutations(numbers, target, expression):
 
 
 def operators(operator, total, char):
-    return 0
+    if operator == "*":
+        return total * char
+    elif operator == "+":
+        return total + char
+    elif operator == "/":
+        return total / char
+    elif operator == "-":
+        return total - char
 
 
 def calculate(expression):
