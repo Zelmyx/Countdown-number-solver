@@ -2,7 +2,8 @@
 def solve(numbers, target):
     recursive_permutations(numbers, target, [])
     correct_expressions(valid_expression_list)
-    print(valid_expression_list[6])
+    result = check_for_duplicates(valid_expression_list)
+    print(result)
 
 
 def recursive_permutations(numbers, target, expression):
@@ -80,6 +81,20 @@ def correct_expressions(valid_expression_list):
             expression.insert(0, "(")
 
 
+def check_for_duplicates(valid_expression_list):
+    no_duplicates_list = []
+
+    for i in valid_expression_list:
+        duplicate = False
+        for j in no_duplicates_list:
+            if sorted(i, key=lambda x: str(x)) == sorted(j, key=lambda x: str(x)):
+                duplicate = True
+        if not duplicate:
+            no_duplicates_list.append(i)
+
+    return no_duplicates_list
+
+
 valid_expression_list = []
 
-solve([1, 2, 3, 4], 24)
+solve([1, 2, 3, 4], 21)
