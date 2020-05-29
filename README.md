@@ -1,2 +1,2 @@
 # Countdown-number-solver
-A solver for the Countdown numbers game
+My attempt at a solver for the Countdown numbers game
